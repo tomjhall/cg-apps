@@ -1,0 +1,169 @@
+
+//Sample usage in Kotlin
+import com.permutive.choueirigroup.wrapper.*
+
+    private fun sampleUsage() {
+
+        //This should be a singleton
+        val permutive = createPermutive(this)
+
+        val pageView: Pageview = createSamplePageviewEvent()
+
+        //To track a page view event - call permutive.trackPage with the pageview
+        //This returns a PageTracker object, which is used to track the page
+        val page = permutive.trackPage(pageView)
+
+        //Set the page has half viewed:
+        page.updatePercentageViewed(0.5f)
+
+        //Track a vidoe playing on the page:
+        val videoPlayEvent: VideoPlay = createSampleVideoPlayEvent()
+        page.trackVideoPlay(videoPlayEvent)
+
+        //You can track other Video events with similar methods:
+        //page.trackVideoPlay(X)
+        //page.trackVideoProgress(X)
+        //page.trackVideoEvent(X)
+        //page.trackVideoLoad(X)
+        //page.trackVideoAdPlay(X)
+        //page.trackVideoAdProgress(X)
+        //page.trackVideoAdEvent(X)
+        //page.trackVideoAdClick(X)
+
+
+        //if the fragment/activity of the page is on goes to the background, you should:
+        page.pause()
+        //when the fragment/activity returns, you should:
+        page.resume()
+
+
+        //Finally - when the user has finished with the page, it's important to close it:
+        page.close()
+    }
+
+    fun createSamplePageviewEvent(): Pageview {
+        val article = Article(
+            authors = listOf("authors"),
+            category = "category",
+            competition = "competition",
+            country = listOf("country"),
+            edition = "edition",
+            id = "id",
+            keywords = listOf("keywords"),
+            language = "language",
+            match = "match",
+            player = listOf("player"),
+            publishedAt = Date(),
+            sport = "sport",
+            subcategories = listOf("subcategories"),
+            subcategory = "subcategory",
+            team = listOf("team"),
+            topic = "topic",
+            type = "type",
+            title = "title"
+        )
+
+        val browser = Browser(
+            language = "language",
+            type = "type"
+        )
+
+        val car = Car(
+            carbrand = "carbrand",
+            carmodel = "carmodel"
+        )
+
+        val device = Device(
+            brand = "brand",
+            carrier = "carrier",
+            connectionType = "connectionType",
+            type = "type"
+        )
+
+        val music = Music(
+            genre = "genre",
+            streamingHabits = "streamingHabits"
+        )
+
+        val sports = Sport(
+            country = listOf("country"),
+            competition = "competition",
+            match = "match",
+            player = listOf("player"),
+            team = listOf("team"),
+            sport = "sport"
+        )
+
+        val broadcastMedia = BroadcastMedia(
+            episode = "episode",
+            keywords = listOf("keywords"),
+            language = "language",
+            series = "series",
+            showID = "showID",
+            showGenre = listOf("showGenre"),
+            type = "type",
+            genre = "genre",
+            season = "season",
+            showname = "showname",
+            subGenre = "subGenre",
+            tvchannel = "tvchannel"
+        )
+
+        val user = User(
+            age = "age",
+            country = "country",
+            gender = "gender",
+            nationality = "nationality"
+        )
+
+        return Pageview(
+            category = "category",
+            dayOfWeek = "dayOfWeek",
+            publisher = "publisher",
+            searchTerm = "searchTerm",
+            subcategories = listOf("subcategories"),
+            timeOfDay = "timeOfDay",
+            dmpproperty = "dmpproperty",
+            dmtier = "dmtier",
+            referrer = "referrer",
+            type = "type",
+            url = "url",
+            article = article,
+            browser = browser,
+            cars = car,
+            device = device,
+            music = music,
+            sports = sports,
+            broadcastMedia = broadcastMedia,
+            user = user
+        )
+    }
+
+    private fun createSampleVideoPlayEvent(): VideoPlay {
+        val enrichedData = EnrichedData(
+            tvchannel = "tvchannel",
+            season = "season",
+            episode = "episode",
+            showGenre = listOf("showGenre"),
+            subGenre = "subGenre",
+            language = "language",
+            keywords = listOf("keywords"),
+            type = "type",
+            category = listOf("category"),
+            subcategories = listOf("subcategories")
+        )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        return VideoPlay(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video
+        )
+    }

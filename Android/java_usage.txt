@@ -1,0 +1,169 @@
+
+//Sample Java usage - it's advised to use Kotlin as named parameters make it much clearer which parameter is which
+
+import com.permutive.choueirigroup.wrapper.*;
+
+
+    private void sampleUsage() throws IOException {
+        final Permutive permutive = PermutiveSDK.createPermutive(this);
+
+        final Pageview pageView = createSamplePageviewEvent();
+
+        //To track a page view event - call permutive.trackPage with the pageview
+        //This returns a PageTracker object, which is used to track the page
+        final PageTracker page = PermutiveSDK.trackPage(permutive,pageView);
+
+        //Set the page has half viewed:
+        page.updatePercentageViewed(0.5f);
+
+        //Track a vidoe playing on the page:
+        final VideoPlay videoPlayEvent = createSampleVideoPlayEvent();
+        PermutiveSDK.trackVideoPlay(page,videoPlayEvent);
+
+        //You can track other Video events with similar methods:
+        //PermutiveSDK.trackVideoPlay(page,X)
+        //PermutiveSDK.trackVideoProgress(page,X)
+        //PermutiveSDK.trackVideoEvent(page,X)
+        //PermutiveSDK.trackVideoLoad(page,X)
+        //PermutiveSDK.trackVideoAdPlay(page,X)
+        //PermutiveSDK.trackVideoAdProgress(page,X)
+        //PermutiveSDK.trackVideoAdEvent(page,X)
+        //PermutiveSDK.trackVideoAdClick(page,X)
+
+
+        //if the fragment/activity of the page is on goes to the background, you should:
+        page.pause();
+        //when the fragment/activity returns, you should:
+        page.resume();
+
+
+        //Finally - when the user has finished with the page, it's important to close it:
+        page.close();
+    }
+
+    private Pageview createSamplePageviewEvent() {
+        Article article = new Article(
+                /*authors = */Arrays.asList("authors"),
+                /*category = */"category",
+                /*competition = */"competition",
+                /*country = */Arrays.asList("country"),
+                /*edition = */"edition",
+                /*id = */"id",
+                /*keywords = */Arrays.asList("keywords"),
+                /*language = */"language",
+                /*match = */"match",
+                /*player = */Arrays.asList("player"),
+                /*publishedAt = */new Date(),
+                /*sport = */"sport",
+                /*subcategories = */Arrays.asList("subcategories"),
+                /*subcategory = */"subcategory",
+                /*team = */Arrays.asList("team"),
+                /*topic = */"topic",
+                /*type = */"type",
+                /*title = */"title"
+        );
+
+        final Browser browser = new Browser(
+                /*language = */"language",
+                /*type = */"type"
+        );
+
+        final Car car = new Car(
+                /*carbrand = */"carbrand",
+                /*carmodel = */"carmodel"
+        );
+
+        final Device device = new Device(
+                /*brand = */"brand",
+                /*carrier = */"carrier",
+                /*connectionType = */"connectionType",
+                /*type = */"type"
+        );
+
+        final Music music = new Music(
+                /*genre = */"genre",
+                /*streamingHabits = */"streamingHabits"
+        );
+
+        final Sport sports = new Sport(
+                /*country = */Arrays.asList("country"),
+                /*competition = */"competition",
+                /*match = */"match",
+                /*player = */Arrays.asList("player"),
+                /*team = */Arrays.asList("team"),
+                /*sport = */"sport"
+        );
+
+        final BroadcastMedia broadcastMedia = new BroadcastMedia(
+                /*episode = */"episode",
+                /*keywords = */Arrays.asList("keywords"),
+                /*language = */"language",
+                /*series = */"series",
+                /*showID = */"showID",
+                /*showGenre = */Arrays.asList("showGenre"),
+                /*type = */"type",
+                /*genre = */"genre",
+                /*season = */"season",
+                /*showname = */"showname",
+                /*subGenre = */"subGenre",
+                /*tvchannel = */"tvchannel"
+        );
+
+        final User user = new User(
+                /*age = */"age",
+                /*country = */"country",
+                /*gender = */"gender",
+                /*nationality = */"nationality"
+        );
+
+        return new Pageview(
+                /*category = */"category",
+                /*dayOfWeek = */"dayOfWeek",
+                /*publisher = */"publisher",
+                /*searchTerm = */"searchTerm",
+                /*subcategories = */Arrays.asList("subcategories"),
+                /*timeOfDay = */"timeOfDay",
+                /*dmpproperty = */"dmpproperty",
+                /*dmtier = */"dmtier",
+                /*referrer = */"referrer",
+                /*type = */"type",
+                /*url = */"url",
+                /*article = */article,
+                /*browser = */browser,
+                /*cars = */car,
+                /*device = */device,
+                /*music = */music,
+                /*sports = */sports,
+                /*broadcastMedia = */broadcastMedia,
+                /*user = */user
+        );
+    }
+
+    private VideoPlay createSampleVideoPlayEvent() {
+        final EnrichedData enrichedData = new EnrichedData(
+                /*tvchannel = */"tvchannel",
+                /*season = */"season",
+                /*episode = */"episode",
+                /*showGenre = */Arrays.asList("showGenre"),
+                /*subGenre = */"subGenre",
+                /*language = */"language",
+                /*keywords = */Arrays.asList("keywords"),
+                /*type = */"type",
+                /*category = */Arrays.asList("category"),
+                /*subcategories = */Arrays.asList("subcategories")
+        );
+
+        final Video video = new Video(
+                /*duration = */1.0,
+                /*name = */"name",
+                /*video_id = */"video_id",
+                /*description = */Arrays.asList("description"),
+                /*published_at = */new Date()
+        );
+
+        return new VideoPlay(
+                /*play_id = */"play_id",
+                /*enriched_data = */enrichedData,
+                /*video = */video
+        );
+    }
