@@ -8,9 +8,9 @@ Download the libraries into your project [Link](https://developer.permutive.com/
 
 ```
 //for androidx library version
-implementation "com.permutive.android:core:1.4.4"
+implementation "com.permutive.android:core:1.5.1"
 //Google Ad Library
-implementation "com.permutive.android:google-ads:1.4.4"
+implementation "com.permutive.android:google-ads:1.5.1"
 //SDK Wrapper code
 import com.permutive.choueirigroup.wrapper.*;
 ```
@@ -80,14 +80,31 @@ page.trackVideoPlay(videoPlayEvent)
 
 You can track other Video events with similar methods:
 ```
-page.trackVideoPlay(X)
-page.trackVideoProgress(X)
-page.trackVideoEvent(X)
-page.trackVideoLoad(X)
-page.trackVideoAdPlay(X)
-page.trackVideoAdProgress(X)
-page.trackVideoAdEvent(X)
-page.trackVideoAdClick(X)
+//Track a vidoe playing on the page:
+val videoPlayEvent: VideoPlay = createVideoPlayEvent()
+page.trackVideoPlay(videoPlayEvent)
+
+//You can track other Video events with similar methods:
+//val videoPlayEvent: VideoProgress = createVideoProgressEvent()
+//page.trackVideoPlay(videoPlayEvent)
+
+//val videoPlayEvent: VideoEvent = createVideoEvent()
+//page.trackVideoPlay(VideoEvent)
+
+//val videoPlayEvent: VideoLoad = createVideoLoadEvent()
+//page.trackVideoPlay(VideoLoad)
+
+//val videoPlayEvent: VideoAdPlay = createVideoAdPlayEvent()
+//page.trackVideoPlay(VideoAdPlay)
+
+//val videoPlayEvent: VideoAdEvent = createVideoAdEvent()
+//page.trackVideoPlay(VideoAdEvent)
+
+//val videoPlayEvent: VideoAdClick = createVideoAdClickEvent()
+//page.trackVideoPlay(VideoAdClick)
+
+//val videoPlayEvent: VideoAdProgress = createVideoAdClickEvent()
+//page.trackVideoPlay(VideoAdProgress)
 ```
 
 [Optional]

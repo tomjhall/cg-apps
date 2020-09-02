@@ -1,13 +1,14 @@
 
 //Sample usage in Kotlin
+//Please review and modify the code where applicable
 import com.permutive.choueirigroup.wrapper.*
 
-    private fun sampleUsage() {
+    private fun Usage() {
 
         //This should be a singleton
         val permutive = createPermutive(this)
 
-        val pageView: Pageview = createSamplePageviewEvent()
+        val pageView: Pageview = createPageviewEvent()
 
         //To track a page view event - call permutive.trackPage with the pageview
         //This returns a PageTracker object, which is used to track the page
@@ -17,18 +18,30 @@ import com.permutive.choueirigroup.wrapper.*
         page.updatePercentageViewed(0.5f)
 
         //Track a vidoe playing on the page:
-        val videoPlayEvent: VideoPlay = createSampleVideoPlayEvent()
+        val videoPlayEvent: VideoPlay = createVideoPlayEvent()
         page.trackVideoPlay(videoPlayEvent)
 
         //You can track other Video events with similar methods:
-        //page.trackVideoPlay(X)
-        //page.trackVideoProgress(X)
-        //page.trackVideoEvent(X)
-        //page.trackVideoLoad(X)
-        //page.trackVideoAdPlay(X)
-        //page.trackVideoAdProgress(X)
-        //page.trackVideoAdEvent(X)
-        //page.trackVideoAdClick(X)
+        //val videoPlayEvent: VideoProgress = createVideoProgressEvent()
+        //page.trackVideoPlay(videoPlayEvent)
+
+        //val videoPlayEvent: VideoEvent = createVideoEvent()
+        //page.trackVideoPlay(VideoEvent)
+        
+        //val videoPlayEvent: VideoLoad = createVideoLoadEvent()
+        //page.trackVideoPlay(VideoLoad)
+
+        //val videoPlayEvent: VideoAdPlay = createVideoAdPlayEvent()
+        //page.trackVideoPlay(VideoAdPlay)
+
+        //val videoPlayEvent: VideoAdEvent = createVideoAdEvent()
+        //page.trackVideoPlay(VideoAdEvent)
+
+        //val videoPlayEvent: VideoAdClick = createVideoAdClickEvent()
+        //page.trackVideoPlay(VideoAdClick)
+
+        //val videoPlayEvent: VideoAdProgress = createVideoAdClickEvent()
+        //page.trackVideoPlay(VideoAdProgress)
 
 
         //if the fragment/activity of the page is on goes to the background, you should:
@@ -41,31 +54,17 @@ import com.permutive.choueirigroup.wrapper.*
         page.close()
     }
 
-    fun createSamplePageviewEvent(): Pageview {
+    fun createPageviewEvent(): Pageview {
         val article = Article(
             authors = listOf("authors"),
-            category = "category",
-            competition = "competition",
-            country = listOf("country"),
             edition = "edition",
             id = "id",
             keywords = listOf("keywords"),
             language = "language",
-            match = "match",
             player = listOf("player"),
             publishedAt = Date(),
-            sport = "sport",
-            subcategories = listOf("subcategories"),
-            subcategory = "subcategory",
-            team = listOf("team"),
-            topic = "topic",
             type = "type",
             title = "title"
-        )
-
-        val browser = Browser(
-            language = "language",
-            type = "type"
         )
 
         val car = Car(
@@ -102,7 +101,6 @@ import com.permutive.choueirigroup.wrapper.*
             showID = "showID",
             showGenre = listOf("showGenre"),
             type = "type",
-            genre = "genre",
             season = "season",
             showname = "showname",
             subGenre = "subGenre",
@@ -129,7 +127,6 @@ import com.permutive.choueirigroup.wrapper.*
             type = "type",
             url = "url",
             article = article,
-            browser = browser,
             cars = car,
             device = device,
             music = music,
@@ -139,7 +136,7 @@ import com.permutive.choueirigroup.wrapper.*
         )
     }
 
-    private fun createSampleVideoPlayEvent(): VideoPlay {
+    private fun createVideoPlayEvent(): VideoPlay {
         val enrichedData = EnrichedData(
             tvchannel = "tvchannel",
             season = "season",
@@ -165,5 +162,276 @@ import com.permutive.choueirigroup.wrapper.*
             play_id = "play_id",
             enriched_data = enrichedData,
             video = video
+        )
+    }
+
+    private fun createVideoProgressEvent(): VideoProgress {
+        val enrichedData = EnrichedData(
+            tvchannel = "tvchannel",
+            season = "season",
+            episode = "episode",
+            showGenre = listOf("showGenre"),
+            subGenre = "subGenre",
+            language = "language",
+            keywords = listOf("keywords"),
+            type = "type",
+            category = listOf("category"),
+            subcategories = listOf("subcategories")
+        )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        return VideoProgress(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video
+            progress = 0.5
+        )
+    }
+
+    private fun createVideoEvent(): VideoEvent {
+        val enrichedData = EnrichedData(
+        tvchannel = "tvchannel",
+        season = "season",
+        episode = "episode",
+        showGenre = listOf("showGenre"),
+        subGenre = "subGenre",
+        language = "language",
+        keywords = listOf("keywords"),
+        type = "type",
+        category = listOf("category"),
+        subcategories = listOf("subcategories")
+     )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        return VideoEvent(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video
+            event = "full screen on"
+        )
+    }
+
+    private fun createVideoLoadEvent(): VideoLoad {
+        val enrichedData = EnrichedData(
+            tvchannel = "tvchannel",
+            season = "season",
+            episode = "episode",
+            showGenre = listOf("showGenre"),
+            subGenre = "subGenre",
+            language = "language",
+            keywords = listOf("keywords"),
+            type = "type",
+            category = listOf("category"),
+            subcategories = listOf("subcategories")
+        )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        return VideoLoad(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video
+        )
+    }
+
+       private fun createVideoAdPlayEvent(): VideoAdPlay {
+        val enrichedData = EnrichedData(
+            tvchannel = "tvchannel",
+            season = "season",
+            episode = "episode",
+            showGenre = listOf("showGenre"),
+            subGenre = "subGenre",
+            language = "language",
+            keywords = listOf("keywords"),
+            type = "type",
+            category = listOf("category"),
+            subcategories = listOf("subcategories")
+        )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        val ad = Ad (
+            duration: 15,
+            advertiser_name: "Adidas",
+            advertiser_id: 12345,
+            order_name: "Adidas",
+            order_id: 12345,
+            lineitem_name: "Adidas",
+            lineitem_id: 12345,
+            creative_name: "Adidas",
+            creative_id: 12345,
+            ad_id: "450703700",
+            title: "In-Stream Video",
+            video_type: "instream" 
+        )
+
+        return VideoAdPlay(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video,
+            ad = ad
+        )
+    }
+
+    private fun createVideoAdEvent(): VideoAdEvent {
+        val enrichedData = EnrichedData(
+            tvchannel = "tvchannel",
+            season = "season",
+            episode = "episode",
+            showGenre = listOf("showGenre"),
+            subGenre = "subGenre",
+            language = "language",
+            keywords = listOf("keywords"),
+            type = "type",
+            category = listOf("category"),
+            subcategories = listOf("subcategories")
+        )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        val ad = Ad (
+            duration: 15,
+            advertiser_name: "Adidas",
+            advertiser_id: 12345,
+            order_name: "Adidas",
+            order_id: 12345,
+            lineitem_name: "Adidas",
+            lineitem_id: 12345,
+            creative_name: "Adidas",
+            creative_id: 12345,
+            ad_id: "450703700",
+            title: "In-Stream Video",
+            video_type: "instream" 
+        )
+
+        return VideoAdEvent(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video,
+            ad = ad
+            event = "full screen on"
+        )
+    }
+
+    private fun createVideoAdClickEvent(): VideoAdClick {
+        val enrichedData = EnrichedData(
+            tvchannel = "tvchannel",
+            season = "season",
+            episode = "episode",
+            showGenre = listOf("showGenre"),
+            subGenre = "subGenre",
+            language = "language",
+            keywords = listOf("keywords"),
+            type = "type",
+            category = listOf("category"),
+            subcategories = listOf("subcategories")
+        )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        val ad = Ad (
+            duration: 15,
+            advertiser_name: "Adidas",
+            advertiser_id: 12345,
+            order_name: "Adidas",
+            order_id: 12345,
+            lineitem_name: "Adidas",
+            lineitem_id: 12345,
+            creative_name: "Adidas",
+            creative_id: 12345,
+            ad_id: "450703700",
+            title: "In-Stream Video",
+            video_type: "instream" 
+        )
+
+        return VideoAdClick(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video,
+            ad = ad
+        )
+    }
+
+     private fun createVideoAdClickEvent(): VideoAdProgress {
+        val enrichedData = EnrichedData(
+            tvchannel = "tvchannel",
+            season = "season",
+            episode = "episode",
+            showGenre = listOf("showGenre"),
+            subGenre = "subGenre",
+            language = "language",
+            keywords = listOf("keywords"),
+            type = "type",
+            category = listOf("category"),
+            subcategories = listOf("subcategories")
+        )
+
+        val video = Video(
+            duration = 1.0,
+            name = "name",
+            video_id = "video_id",
+            description = listOf("description"),
+            published_at = Date()
+        )
+
+        val ad = Ad (
+            duration: 15,
+            advertiser_name: "Adidas",
+            advertiser_id: 12345,
+            order_name: "Adidas",
+            order_id: 12345,
+            lineitem_name: "Adidas",
+            lineitem_id: 12345,
+            creative_name: "Adidas",
+            creative_id: 12345,
+            ad_id: "450703700",
+            title: "In-Stream Video",
+            video_type: "instream" 
+        )
+
+        return VideoAdProgress(
+            play_id = "play_id",
+            enriched_data = enrichedData,
+            video = video,
+            ad = ad,
+            progress = 0.5
         )
     }

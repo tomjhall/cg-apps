@@ -16,7 +16,6 @@ data class Pageview(
     val type: String? = null,
     val url: String? = null,
     val article: Article? = null,
-    val browser: Browser? = null,
     val cars: Car? = null,
     val device: Device? = null,
     val music: Music? = null,
@@ -37,7 +36,6 @@ data class Pageview(
         "type" to type,
         "url" to url,
         "article" to article?.toEventProperties(),
-        "browser" to browser?.toEventProperties(),
         "cars" to cars?.toEventProperties(),
         "device" to device?.toEventProperties(),
         "music" to music?.toEventProperties(),
@@ -218,7 +216,7 @@ data class EnrichedData(
     val keywords: List<String>? = null,
     val type: String? = null,
     val category: List<String>? = null,
-    val subcategories: List<String>? = null
+    val subCategory: List<String>? = null
 ) {
     fun toEventProperties(): EventProperties = eventPropertiesFromNullablePairs(
         "tvchannel" to tvchannel,
@@ -230,59 +228,29 @@ data class EnrichedData(
         "keywords" to keywords,
         "type" to type,
         "category" to category,
-        "subcategories" to subcategories
+        "subCategory" to subCategory
     )
 }
 
 data class Article(
     val authors: List<String>? = null,
-    val category: String? = null,
-    val competition: String? = null,
-    val country: List<String>? = null,
     val edition: String? = null,
     val id: String? = null,
     val keywords: List<String>? = null,
     val language: String? = null,
-    val match: String? = null,
-    val player: List<String>? = null,
     val publishedAt: Date? = null,
-    val sport: String? = null,
-    val subcategories: List<String>? = null,
-    val subcategory: String? = null,
-    val team: List<String>? = null,
-    val topic: String? = null,
     val type: String? = null,
     val title: String? = null
 ) {
     fun toEventProperties(): EventProperties = eventPropertiesFromNullablePairs(
         "authors" to authors,
-        "category" to category,
-        "competition" to competition,
-        "country" to country,
         "edition" to edition,
         "id" to id,
         "keywords" to keywords,
         "language" to language,
-        "match" to match,
-        "player" to player,
         "publishedAt" to publishedAt,
-        "sport" to sport,
-        "subcategories" to subcategories,
-        "subcategory" to subcategory,
-        "team" to team,
-        "topic" to topic,
         "type" to type,
         "title" to title
-    )
-}
-
-data class Browser(
-    val language: String? = null,
-    val type: String? = null
-) {
-    fun toEventProperties(): EventProperties = eventPropertiesFromNullablePairs(
-        "language" to language,
-        "type" to type
     )
 }
 
@@ -346,7 +314,6 @@ data class BroadcastMedia(
     val showID: String? = null,
     val showGenre: List<String>? = null,
     val type: String? = null,
-    val genre: String? = null,
     val season: String? = null,
     val showname: String? = null,
     val subGenre: String? = null,
@@ -360,7 +327,6 @@ data class BroadcastMedia(
         "showID" to showID,
         "showGenre" to showGenre,
         "type" to type,
-        "genre" to genre,
         "season" to season,
         "showname" to showname,
         "subGenre" to subGenre,
