@@ -126,3 +126,12 @@ Targeting with Google Ads - [Link](https://developer.permutive.com/docs/android#
 ```
 val adRequest = PublisherAdRequest.Builder().buildWithPermutiveTargeting(permutive)
 ```
+
+## Step 6
+Targeting trough key value pairs
+```
+val currentSegments = permutive.currentSegments //List<Int>
+currentSegments.forEach {
+  log("The user is in segment: $it")
+}
+```
