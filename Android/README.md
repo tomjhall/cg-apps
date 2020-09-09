@@ -50,11 +50,6 @@ We recommend creating this right before you are ready to submit the event to Per
 val pageView: Pageview = createPageviewEvent() //create a pageview object
 val videoPlayEvent: VideoPlay = createVideoPlayEvent() //create a video object
 ```
-eg for setting the title, you can pass it as followed.
-Please do this for all required fields.
-```
-val pageView: Pageview = createPageviewEvent(title='<ARTICLE TITLE>') //create a pageview object
-```
 
 ## Track a Pageview Event
 Track an Pageview Event - [Link](https://developer.permutive.com/docs/android#event-tracking)
@@ -146,18 +141,15 @@ val adRequest = PublisherAdRequest.Builder().buildWithPermutiveTargeting(permuti
 
 ## Get Segments to Target Video with Key Values
 Targeting trough key value pairs
+
+See below as an example of how you could include the Permutive segments at the right location. Please note that this is only an example and might need to be adjusted for your setup.
+
 ```
 val currentSegments = permutive.currentSegments //List<Int>
 currentSegments.forEach {
   log("The user is in segment: $it")
 }
-
-See below as an example of how you could include the Permutive segments at the right location. Please note that this is only an example and might need to be adjusted for your setup.
-
-```jsx
-var tagURL = '...'; // your advertising.tag or advertising.schedule
-var playerSegsPerm = encodeURIComponent('&permutive=' + encodeURIComponent(JSON.parse(localStorage._pdfps || '[]').slice(0,250).join(',')));
- 
-tagURL = tagURL.replace(/(cust_params[^&]+)/, '$1' + playerSegsPerm);
+var tagURL = '...'; // your advertising.tag or advertising.schedule 
+tagURL = tagURL.replace(/(cust_params[^&]+)/, '$1' + currentSegments);
 ```
-```
+
