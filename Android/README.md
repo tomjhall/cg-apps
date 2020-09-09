@@ -3,7 +3,7 @@
 Permutive recommends using Kotlin for the deployment of the Permutive SDK.
 Please review the kotlin_usage.txt as well as the EventSchema.kt and PermutiveSDK.kt files within this repo in combination with the below steps.
 
-## Step 1
+## Download
 Download the libraries into your project [Link](https://developer.permutive.com/docs/android#download)
 
 ```
@@ -15,7 +15,7 @@ implementation "com.permutive.android:google-ads:1.5.1"
 import com.permutive.choueirigroup.wrapper.*;
 ```
 
-## Step 2
+## Initialize the SDK
 Initialise the SDK - [Link](https://developer.permutive.com/docs/android#initialise-the-sdk)
 
 ```
@@ -23,23 +23,39 @@ import PermutiveSDK
 val permutive = createPermutive(this)
 ```
 
-## Step 2.5
+## Add additional Aliases
+Add additional Aliases [OPTIONAL] 
+
+Please ensure to use the same tag for the identity used on app and web.
+```
+val customAliases = listOf(
+         Alias.create(tag="app-name",id="918635528918")
+         )
+   )
+permutive.setIdentity(customAliases)
+```
+
+##  Set Developer Mode On
 Enable debug logging while in debug mode to track any issue in logcat
 
 ```
 permutive.setDeveloperMode(true)
 ```
 
-## Step 3
+## Create Pageview and/or Video Objects
 Create the pageview and/or an video objects when you are ready to start tracking an event. 
 We recommend creating this right before you are ready to submit the event to Permutive.
 
 ```
-val pageView: Pageview = createSamplePageviewEvent()
-val videoPlayEvent: VideoPlay = createSampleVideoPlayEvent()
+
+val pageView: Pageview = createPageviewEvent() //create a pageview object
+
+
+
+val videoPlayEvent: VideoPlay = createVideoPlayEvent() //create a video object
 ```
 
-## Step 4
+## Track a Pageview Event
 Track an Pageview Event - [Link](https://developer.permutive.com/docs/android#event-tracking)
 ```
 val page = permutive.trackPage(pageView)
@@ -64,7 +80,7 @@ When the user has finished with the page, make sure to call
 page.close()
 ```
        
-## Step 4
+## Track a Video Event
 Track an Video Event - [Link](https://developer.permutive.com/docs/android#event-tracking)
 
 Ensure a page object has been created
@@ -120,14 +136,14 @@ When the user has finished with the page, make sure to call
 page.close()
 ```
 
-## Step 5
+## Targeting with Google Ads for Display Ads
 Targeting with Google Ads - [Link](https://developer.permutive.com/docs/android#custom-targeting-with-google-ads)
 
 ```
 val adRequest = PublisherAdRequest.Builder().buildWithPermutiveTargeting(permutive)
 ```
 
-## Step 6
+## Get Segments to Target Video with Key Values
 Targeting trough key value pairs
 ```
 val currentSegments = permutive.currentSegments //List<Int>

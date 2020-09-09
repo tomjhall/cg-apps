@@ -21,34 +21,32 @@ import com.permutive.choueirigroup.wrapper.*
         val videoPlayEvent: VideoPlay = createVideoPlayEvent()
         page.trackVideoPlay(videoPlayEvent)
 
-        //You can track other Video events with similar methods:
-        //val videoPlayEvent: VideoProgress = createVideoProgressEvent()
-        //page.trackVideoPlay(videoPlayEvent)
+        //You can track other Video events with similar methods as seen below:
+        val videoPlayEvent: VideoProgress = createVideoProgressEvent()
+        page.trackVideoProgress(VideoProgress)
 
-        //val videoPlayEvent: VideoEvent = createVideoEvent()
-        //page.trackVideoPlay(VideoEvent)
+        val videoPlayEvent: VideoEvent = createVideoEvent()
+        page.trackVideoEvent(VideoEvent)
         
-        //val videoPlayEvent: VideoLoad = createVideoLoadEvent()
-        //page.trackVideoPlay(VideoLoad)
+        val videoPlayEvent: VideoLoad = createVideoLoadEvent()
+        page.trackVideoLoad(VideoLoad)
 
-        //val videoPlayEvent: VideoAdPlay = createVideoAdPlayEvent()
-        //page.trackVideoPlay(VideoAdPlay)
+        val videoPlayEvent: VideoAdPlay = createVideoAdPlayEvent()
+        page.trackVideoAdPlay(VideoAdPlay)
 
-        //val videoPlayEvent: VideoAdEvent = createVideoAdEvent()
-        //page.trackVideoPlay(VideoAdEvent)
+        val videoPlayEvent: VideoAdEvent = createVideoAdEvent()
+        page.trackVideoAdEvent(VideoAdEvent)
 
-        //val videoPlayEvent: VideoAdClick = createVideoAdClickEvent()
-        //page.trackVideoPlay(VideoAdClick)
+        val videoPlayEvent: VideoAdClick = createVideoAdClickEvent()
+        page.trackVideoAdClick(VideoAdClick)
 
-        //val videoPlayEvent: VideoAdProgress = createVideoAdClickEvent()
-        //page.trackVideoPlay(VideoAdProgress)
-
+        val videoPlayEvent: VideoAdProgress = createVideoAdClickEvent()
+        page.trackVideoAdProgress(VideoAdProgress)
 
         //if the fragment/activity of the page is on goes to the background, you should:
         page.pause()
         //when the fragment/activity returns, you should:
         page.resume()
-
 
         //Finally - when the user has finished with the page, it's important to close it:
         page.close()
