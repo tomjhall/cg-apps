@@ -101,26 +101,26 @@ val videoPlayEvent: VideoPlay = createVideoPlayEvent()
 page.trackVideoPlay(videoPlayEvent)
 
 //You can track other Video events with similar methods:
-//val videoPlayEvent: VideoProgress = createVideoProgressEvent()
-//page.trackVideoPlay(videoPlayEvent)
+val videoPlayEvent: VideoProgress = createVideoProgressEvent()
+page.trackVideoPlay(videoPlayEvent)
 
-//val videoPlayEvent: VideoEvent = createVideoEvent()
-//page.trackVideoPlay(VideoEvent)
+val videoPlayEvent: VideoEvent = createVideoEvent()
+page.trackVideoPlay(VideoEvent)
 
-//val videoPlayEvent: VideoLoad = createVideoLoadEvent()
-//page.trackVideoPlay(VideoLoad)
+val videoPlayEvent: VideoLoad = createVideoLoadEvent()
+page.trackVideoPlay(VideoLoad)
 
-//val videoPlayEvent: VideoAdPlay = createVideoAdPlayEvent()
-//page.trackVideoPlay(VideoAdPlay)
+val videoPlayEvent: VideoAdPlay = createVideoAdPlayEvent()
+page.trackVideoPlay(VideoAdPlay)
 
-//val videoPlayEvent: VideoAdEvent = createVideoAdEvent()
-//page.trackVideoPlay(VideoAdEvent)
+val videoPlayEvent: VideoAdEvent = createVideoAdEvent()
+page.trackVideoPlay(VideoAdEvent)
 
-//val videoPlayEvent: VideoAdClick = createVideoAdClickEvent()
-//page.trackVideoPlay(VideoAdClick)
+val videoPlayEvent: VideoAdClick = createVideoAdClickEvent()
+page.trackVideoPlay(VideoAdClick)
 
-//val videoPlayEvent: VideoAdProgress = createVideoAdClickEvent()
-//page.trackVideoPlay(VideoAdProgress)
+val videoPlayEvent: VideoAdProgress = createVideoAdClickEvent()
+page.trackVideoPlay(VideoAdProgress)
 ```
 
 [Optional]
