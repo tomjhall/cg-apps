@@ -2,13 +2,14 @@
 package com.permutive.choueirigroup.wrapper
 
 import android.content.Context
+import android.net.Uri
 import com.permutive.android.PageTracker
 import com.permutive.android.Permutive
 import com.permutive.android.aaid.AaidAliasProvider
 import java.util.*
 
-private const val projectId = "<PROJECT ID>"
-private const val apiKey = "<API KEY>"
+private const val projectId = "f3a06674-ebb9-4b9d-ba8f-0052018c0687"
+private const val apiKey = "4cb3c61b-8d82-42ab-b17b-29ee6b4d5548"
 
 private var createdInstance = false
 
@@ -27,8 +28,16 @@ fun createPermutive(context: Context): Permutive =
         }
 
 //Extension method helpers:
-fun Permutive.trackPage(properties: Pageview): PageTracker =
-    trackPage(properties.toEventProperties())
+@JvmOverloads
+fun Permutive.trackPage(pageView: Pageview,
+                        title: String? = null,
+                        url: Uri? = null,
+                        referrer: Uri? = null): PageTracker =
+    trackPage(
+        pageView.toEventProperties(),
+        title = title,
+        url = url,
+        referrer = referrer)
 
 fun PageTracker.trackVideoPlay(properties: VideoPlay) {
     track("VideoPlay", properties.toEventProperties())
