@@ -12,7 +12,12 @@ import com.permutive.choueirigroup.wrapper.*
 
         //To track a page view event - call permutive.trackPage with the pageview
         //This returns a PageTracker object, which is used to track the page
-        val page = permutive.trackPage(pageView)
+        val page = permutive.trackPage(
+            pageView = pageView,
+            title = "page title",
+            url = Uri.parse("http://uri.to.page/path/to/page.html"),
+            referrer = Uri.parse("http://uri.for.referrer/")
+        )
 
         //Set the page has half viewed:
         page.updatePercentageViewed(0.5f)
